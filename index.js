@@ -89,10 +89,7 @@ async function main() {
       core.debug(`Git User already configured as: ${inspect(gitUser)}`);
     } else {
       const matches = inputs.author.match(/^([^<]+)\s*<([^>]+)>$/);
-      assert(
-        matches,
-        `The "author" input "${inputs.author}" does not conform to the "Name <email@domain.test>" format`
-      );
+   
       const [, name, email] = matches;
 
       await setGitUser({
@@ -110,7 +107,7 @@ async function main() {
     }
 
     await runShellCommand(
-      `git commit -m '${inputs.commitMessage}' --author '${inputs.author}'`
+      `git commit -m '${inputs.commitMessage}' --author '${owner}<${inputs.author}>'`
     );
 
     const currentBranch = await runShellCommand(
