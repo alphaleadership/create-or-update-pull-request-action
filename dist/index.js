@@ -34349,7 +34349,7 @@ async function main() {
       updatePRTitleAndBody: core.getInput("update-pull-request-title-and-body"),
       draft: core.getInput("draft"),
     };
-
+    console.log(inputs)
     core.debug(`Inputs: ${inspect(inputs)}`);
 
     if (
